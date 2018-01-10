@@ -35,6 +35,13 @@ store.dispatch({type:"HELLO", playload:13,firstname:'Sathya' ,lastname:'Bamanan'
 
 class App extends Component {
 
+  handleSubmit = (e) =>{
+    e.preventDefault();
+    console.log({
+      title:this.title.value,
+      own : this.own.checked
+    });
+  }
 
   render() {
     return (
@@ -46,6 +53,12 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <form onSubmit={this.handleSubmit}>
+        <input type="text" ref={input=>this.title=input} />
+        <input type="checkbox" ref={input=>this.own=input} />
+        <input type="submit" value="submit" />
+
+        </form>
       </div>
     );
   }
