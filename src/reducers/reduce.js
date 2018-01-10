@@ -20,8 +20,25 @@ const userReducer = (state={}, action)=>{
   return state;
 };
 
+
+/*
+  using the funciton userReducerFunction
+  it's manage if else..... finally return state
+*/
+const userReducerFunction = function(state={}, action){
+
+  if(action.type == INC){
+    state = {...state, name:action.playload, firstname:action.firstname, lastname:action.lastname};
+    return state;
+  }
+
+ return state;
+
+};
+
 const appCal = combineReducers({
-  user : userReducer
+  user : userReducer,
+  userFuc : userReducerFunction
 });
 
 export default appCal
