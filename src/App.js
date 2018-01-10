@@ -11,11 +11,11 @@ store.subscribe(()=>{
 });
 
 
-store.dispatch({type:"INC", playload:10}); /* assign value */
-store.dispatch({type:"INC", playload:11}); /* assign value */
-store.dispatch({type:"INC", playload:12}); /* assign value */
+store.dispatch({type:"INC", playload:10 ,firstname:'Hello' ,lastname:'world'}); /* assign value */
+store.dispatch({type:"INC", playload:11,firstname:'Mohamed' ,lastname:'Rimsan'}); /* assign value */
+store.dispatch({type:"INC", playload:12,firstname:'Kevin' ,lastname:'de Kuzman'}); /* assign value */
 store.dispatch({type:"DES", playload:12}); /* assign value */
-store.dispatch({type:"INC", playload:13}); /* assign value */
+store.dispatch({type:"INC", playload:13,firstname:'Sathya' ,lastname:'Bamanan'}); /* assign value */
 
 class App extends Component {
 

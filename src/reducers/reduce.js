@@ -9,11 +9,11 @@ import {INC,DES,incInc,desDes} from '../actions/action'; /* calling from existin
 const userReducer = (state={}, action)=>{
   switch (action.type) {
     case INC:{
-      state = action.playload + 1;
+      state = {...state,name:action.playload, firstname:action.firstname, lastname:action.lastname}
       break;
     }
     case DES : {
-      state = action.playload - 1;
+      state = action.playload;
       break;
     }
   }
