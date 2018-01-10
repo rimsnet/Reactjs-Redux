@@ -2,9 +2,23 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import  appCal  from './reducers/reduce'; /* calling from existing reducers folder reduce.js*/
-import {createStore} from 'redux'; /* calling from library */
+import {createStore,applyMiddleware} from 'redux'; /* calling from library */
 
-const store = createStore(appCal); /* appCal from reducers folder reduce.js */
+const logger = (store)=> (next)=> (action)=>{
+  console.log("ation fired ",action);
+  next(action);
+}
+
+const error = (store)=> (next)=> (action)=>{
+  try{
+    next(action);
+  }catch(e){
+    console.log("Oh Error ",e);
+  }
+}
+
+const middleware = applyMiddleware(logger,error);
+const store = createStore(appCal,middleware); /* appCal from reducers folder reduce.js */
 
 store.subscribe(()=>{
   console.log("Subscribe ",store.getState()); /* console view */
@@ -16,6 +30,8 @@ store.dispatch({type:"INC", playload:11,firstname:'Mohamed' ,lastname:'Rimsan'})
 store.dispatch({type:"INC", playload:12,firstname:'Kevin' ,lastname:'de Kuzman'}); /* assign value */
 store.dispatch({type:"DES", playload:12}); /* assign value */
 store.dispatch({type:"INC", playload:13,firstname:'Sathya' ,lastname:'Bamanan'}); /* assign value */
+
+store.dispatch({type:"HELLO", playload:13,firstname:'Sathya' ,lastname:'Bamanan'}); /* assign error value type */
 
 class App extends Component {
 

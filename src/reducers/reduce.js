@@ -30,6 +30,11 @@ const userReducerFunction = function(state={}, action){
   if(action.type == INC){
     state = {...state, name:action.playload, firstname:action.firstname, lastname:action.lastname};
     return state;
+  }else if (action.type == DES) {
+    state = action.playload;
+    return state;
+  }else {
+    return  new Error("THis's new Error! "); /* throw the error */
   }
 
  return state;
